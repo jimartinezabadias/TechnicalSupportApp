@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+
+    app:
+        build: .docker/php-fpm
+        container_name: ${APP_NAME}-app
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+        environment:
+            - DB_HOST=${DB_HOST}
+            - DB_PORT=${DB_PORT}
+        depends_on:
+            - database
+
+    web-proxy: 
+        build: .docker/nginx
+        container_name: ${APP_NAME}-web-proxy
+        working_dir: /var/www 
+        volumes:
+            - .:/var/www
+        ports:
+            - 8080:80
+        depends_on:
+            - app
+
+    database:
+        image: postgres:12.3-alpine
+        container_name: ${APP_NAME}-database
+        volumes:
+            - dbdata:/var/lib/pgsql 
+        environment:
+            - POSTGRES_DB=${DB_DATABASE}
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+        ports:
+            - "54321:5432"
+
+    selenium:
+        image: selenium/standalone-chrome:85.0 
+        container_name: ${APP_NAME}-selenium
+
+volumes:
+    dbdata:
