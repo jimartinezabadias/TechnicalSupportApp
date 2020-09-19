@@ -40,6 +40,9 @@ services:
     selenium:
         image: selenium/standalone-chrome:85.0 
         container_name: ${APP_NAME}-selenium
+        depends_on:
+            - web-proxy
+
 
 volumes:
     dbdata:
