@@ -19,7 +19,6 @@ class CreateMachinesTable extends Migration
             $table->string('model');
             $table->string('trademark');
             $table->string('type');
-            // services 
             $table->timestamps();
         });
     }

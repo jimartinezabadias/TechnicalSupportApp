@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Machine extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['owner','model','trademark','type'];
+
+    public function services(){
+
+        return $this->hasMany('App\Models\Service');      
+
+    }
 }
