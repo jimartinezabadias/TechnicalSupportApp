@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Machine;
+use App\Http\Requests\CreateMachineRequest;
 use Illuminate\Http\Request;
 
 class MachineController extends Controller
@@ -38,7 +39,7 @@ class MachineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMachineRequest $request)
     {
         //
         $input = $request->all();

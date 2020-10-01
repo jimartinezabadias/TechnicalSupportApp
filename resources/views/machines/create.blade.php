@@ -25,8 +25,13 @@
                                         Owner Name
                                     </label>
                         
-                                    <input id="owner" name="owner" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
-        
+                                    <input id="owner" name="owner" type="text" value="{{ old('owner') }}"
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full">
+                                    
+                                    @error('owner')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
@@ -38,8 +43,9 @@
                                     <!-- <div class='w-full md:w-full px-3 mb-6'> -->
                                         <label for="type" class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Type</label>
                                         <div class="flex-shrink w-full inline-block relative">
-                                            <select id="type" name="type" class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
-                                                <option>choose ...</option>
+                                            <select id="type" name="type" value="{{ old('type') }}"
+                                                class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
+                                                <option></option>
                                                 <option>Printer</option>
                                                 <option>Plotter</option>
                                             </select>
@@ -48,6 +54,9 @@
                                             </div>
                                         </div>
                                     <!-- </div> -->
+                                    @error('type')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
         
                                     <!-- <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="trademark" type="text"> -->
         
@@ -59,8 +68,13 @@
                                         Model
                                     </label>
         
-                                    <input id="model" name="model" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
-                                
+                                    <input id="model" name="model" type="text" value="{{ old('model') }}" 
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full">
+                                    
+                                    @error('model')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
+                                    
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
@@ -69,8 +83,13 @@
                                         Trademark
                                     </label>
         
-                                    <input id="trademark" name="trademark" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
-        
+                                    <input id="trademark" name="trademark" type="text" value="{{ old('trademark') }}"
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full">
+                                    
+                                    @error('trademark')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
+
                                 </div>
 
                             </div>
