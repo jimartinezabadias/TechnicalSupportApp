@@ -15,6 +15,9 @@
                     <x-jet-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('machines.index') }}" :active="request()->routeIs('machines.*')">
+                        Machines
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -108,6 +111,9 @@
             <x-jet-responsive-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <x-jet-nav-link href="{{ route('machines.index') }}" :active="request()->routeIs('machines.*')">
+                Machines
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
