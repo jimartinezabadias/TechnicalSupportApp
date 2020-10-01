@@ -14,6 +14,6 @@ class MachineSeeder extends Seeder
      */
     public function run()
     {
-        Machine::factory(10)->create();
+        Machine::factory(4)->create();
     }
 }
