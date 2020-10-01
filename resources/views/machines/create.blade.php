@@ -35,7 +35,7 @@
                                                     Owner Name
                                                 </label>
                                     
-                                                <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="owner" type="text">
+                                                <input id="owner" name="owner" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
                     
                                             </div>
 
@@ -46,9 +46,9 @@
                                                 </label> -->
 
                                                 <!-- <div class='w-full md:w-full px-3 mb-6'> -->
-                                                    <label class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Type</label>
+                                                    <label for="type" class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Type</label>
                                                     <div class="flex-shrink w-full inline-block relative">
-                                                        <select class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
+                                                        <select id="type" name="type" class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
                                                             <option>choose ...</option>
                                                             <option>Printer</option>
                                                             <option>Plotter</option>
@@ -69,7 +69,7 @@
                                                     Model
                                                 </label>
                     
-                                                <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="model" type="text">
+                                                <input id="model" name="model" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
                                             
                                             </div>
 
@@ -79,7 +79,7 @@
                                                     Trademark
                                                 </label>
                     
-                                                <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="trademark" type="text">
+                                                <input id="trademark" name="trademark" type="text" class="form-input rounded-md shadow-sm mt-1 block w-full">
                     
                                             </div>
 

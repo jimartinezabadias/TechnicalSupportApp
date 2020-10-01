@@ -41,6 +41,9 @@ class MachineController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->all();
+        Machine::create($input);
+        return redirect('machines');
     }
 
     /**
