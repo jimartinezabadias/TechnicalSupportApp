@@ -44,7 +44,7 @@ class MachineController extends Controller
         //
         $input = $request->all();
         $machine = Machine::create($input);
-        return redirect('machines/' . $machine->id );
+        return redirect('machines');
     }
 
     /**
@@ -68,6 +68,7 @@ class MachineController extends Controller
     public function edit(Machine $machine)
     {
         //
+        return view('machines.edit', ['machine' => $machine] );
     }
 
     /**
@@ -77,9 +78,16 @@ class MachineController extends Controller
      * @param  \App\Models\Machine  $machine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Machine $machine)
+    public function update(CreateMachineRequest $request, Machine $machine)
     {
         //
+        $input = $request->all();
+        $machine->owner = $input['owner'];
+        $machine->type = $input['type'];
+        $machine->model = $input['model'];
+        $machine->trademark = $input['trademark'];
+        $machine->save();
+        return redirect('machines');
     }
 
     /**

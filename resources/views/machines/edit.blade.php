@@ -1,10 +1,10 @@
 <x-machines>
-    
+
     <div class="mt-10 sm:mt-0">
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium text-gray-900">Create Machine</h3>
+                    <h3 class="text-lg font-medium text-gray-900">Edit Machine</h3>
 
                     <p class="mt-1 text-sm text-gray-600">
                         Ensure machine owner is correct.
@@ -13,7 +13,8 @@
             </div>
 
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="POST" action="{{ route('machines.store') }}">
+                <form method="POST" action="{{ route('machines.update', $machine->id ) }}">
+                    @method('PUT')
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -25,7 +26,8 @@
                                         Owner Name
                                     </label>
                         
-                                    <input id="owner" name="owner" type="text" value="{{ old('owner') }}"
+                                    <input id="owner" name="owner" type="text" 
+                                        value="@error('owner'){{old('owner')}}@enderror{{$machine->owner}}"
                                         class="form-input rounded-md shadow-sm mt-1 block w-full">
                                     
                                     @error('owner')
@@ -46,8 +48,8 @@
                                             <select id="type" name="type" value="{{ old('type') }}"
                                                 class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
                                                 <option></option>
-                                                <option @if( old('type') == "Printer" ) selected @endif >Printer</option>
-                                                <option @if( old('type') == "Plotter" ) selected @endif >Plotter</option>
+                                                <option @if($machine->type == "Printer") selected @endif >Printer</option>
+                                                <option @if($machine->type == "Plotter") selected @endif >Plotter</option>
                                             </select>
                                             <div class="pointer-events-none absolute top-0 mt-3  right-0 flex items-center px-2 text-gray-600">
                                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -68,7 +70,8 @@
                                         Model
                                     </label>
         
-                                    <input id="model" name="model" type="text" value="{{ old('model') }}" 
+                                    <input id="model" name="model" type="text" 
+                                        value="@error('model'){{old('model')}}@enderror{{$machine->model}}" 
                                         class="form-input rounded-md shadow-sm mt-1 block w-full">
                                     
                                     @error('model')
@@ -83,7 +86,8 @@
                                         Trademark
                                     </label>
         
-                                    <input id="trademark" name="trademark" type="text" value="{{ old('trademark') }}"
+                                    <input id="trademark" name="trademark" type="text" 
+                                        value="@error('trademark'){{old('trademark')}}@enderror{{$machine->trademark}}"
                                         class="form-input rounded-md shadow-sm mt-1 block w-full">
                                     
                                     @error('trademark')
