@@ -85,6 +85,22 @@
                         </ul>
                     </dd>
                 </div>
+
+                <div class="flex bg-white items-center justify-end px-4 py-3 text-right sm:px-6">
+        
+                    <form method="POST" action="{{ route('machines.destroy', $machine) }}">
+                        @method('DELETE')
+                        @csrf
+
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                            Delete Machine
+                        </button>
+
+                    </form>
+
+                
+                </div>
+
             </dl>
         </div>
 
