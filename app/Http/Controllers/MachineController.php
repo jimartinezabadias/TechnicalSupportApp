@@ -43,8 +43,8 @@ class MachineController extends Controller
     {
         //
         $input = $request->all();
-        Machine::create($input);
-        return redirect('machines');
+        $machine = Machine::create($input);
+        return redirect('machines/' . $machine->id );
     }
 
     /**
@@ -56,6 +56,7 @@ class MachineController extends Controller
     public function show(Machine $machine)
     {
         //
+        return view('machines.show', [ 'machine' => $machine] );
     }
 
     /**

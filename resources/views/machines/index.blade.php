@@ -100,13 +100,13 @@
                                 Owner
                             </th>
                             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                Type
+                            </th>
+                            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Model
                             </th>
                             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                 Status
-                            </th>
-                            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Type
                             </th>
                             <th class="px-6 py-3 bg-gray-50"></th>
                             </tr>
@@ -122,6 +122,9 @@
                                         jane.cooper@example.com
                                     </div>
                                 </td>
+                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                                    {{ $machine->type }}
+                                </td>
                                 <td class="px-6 py-4 whitespace-no-wrap">
                                     <div class="text-sm leading-5 text-gray-900">{{ $machine->model }}</div>
                                     <div class="text-sm leading-5 text-gray-500">{{ $machine->trademark }}</div>
@@ -131,11 +134,8 @@
                                         Functional
                                     </span>
                                 </td>
-                                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                                    {{ $machine->type }}
-                                </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="{{ route('machines.show', $machine->id ) }}" class="text-indigo-600 hover:text-indigo-900">View</a>
                                 </td>
                             </tr>
                             @endforeach
