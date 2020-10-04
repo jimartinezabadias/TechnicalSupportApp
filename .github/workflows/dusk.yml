@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12.3-alpine
+        image: postgres:12.3
         env:
             POSTGRES_DB: laravel
             POSTGRES_USER: myuser
@@ -21,7 +21,6 @@ jobs:
         DB_USERNAME: myuser
         DB_PASSWORD: thisisasecretpassword
         APP_URL: http://127.0.0.1:8000
-        SELENIUM_URL: http://localhost:9515
     steps:
       - uses: actions/checkout@v2
 
