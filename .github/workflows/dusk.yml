@@ -18,8 +18,8 @@ jobs:
         ports:
           - 54321:5432
     env:
-        POSTGRES_USER: myuser
-        POSTGRES_PASSWORD: thisisasecretpassword
+        DB_USERNAME: myuser
+        DB_PASSWORD: thisisasecretpassword
         APP_URL: http://127.0.0.1:8000
         SELENIUM_URL: http://localhost:9515
     steps:
