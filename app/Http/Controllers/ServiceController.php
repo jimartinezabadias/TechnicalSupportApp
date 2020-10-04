@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Machine;
+use App\Http\Requests\CreateServiceRequest;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -27,6 +29,8 @@ class ServiceController extends Controller
     public function create()
     {
         //
+        $machines = Machine::all();
+        return view('services.create', [ 'machines' => $machines ]);
     }
 
     /**
@@ -35,9 +39,12 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateServiceRequest $request)
     {
         //
+        $input = $request->all();
+        $service = Service::create($input);
+        return redirect('services');
     }
 
     /**
