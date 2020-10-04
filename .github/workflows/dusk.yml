@@ -11,13 +11,13 @@ jobs:
     services:
       postgres:
         image: postgres:12.3-alpine
-        environment:
+        env:
           - POSTGRES_DB: laravel
           - POSTGRES_USER: myuser
           - POSTGRES_PASSWORD: thisisasecretpassword
         ports:
           - 54321:5432
-    environment:
+    env:
       - POSTGRES_USER: myuser
       - POSTGRES_PASSWORD: thisisasecretpassword
       - APP_URL: http://127.0.0.1:8000
