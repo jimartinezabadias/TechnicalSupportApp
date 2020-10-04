@@ -12,16 +12,16 @@ jobs:
       postgres:
         image: postgres:12.3-alpine
         env:
-          - POSTGRES_DB: laravel
-          - POSTGRES_USER: myuser
-          - POSTGRES_PASSWORD: thisisasecretpassword
+            POSTGRES_DB: laravel
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: thisisasecretpassword
         ports:
           - 54321:5432
     env:
-      - POSTGRES_USER: myuser
-      - POSTGRES_PASSWORD: thisisasecretpassword
-      - APP_URL: http://127.0.0.1:8000
-      - SELENIUM_URL: http://localhost:9515
+        POSTGRES_USER: myuser
+        POSTGRES_PASSWORD: thisisasecretpassword
+        APP_URL: http://127.0.0.1:8000
+        SELENIUM_URL: http://localhost:9515
     steps:
       - uses: actions/checkout@v2
 
