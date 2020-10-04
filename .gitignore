@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-/html/.config/*
+/html/*
 .env
 .env.backup
 .env.dusk.local
