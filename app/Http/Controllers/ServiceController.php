@@ -68,6 +68,10 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         //
+        $machines = Machine::all();
+        return view('services.edit', [
+            'service' => $service,
+            'machines' => $machines ] );
     }
 
     /**
