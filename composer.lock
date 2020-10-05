@@ -295,16 +295,16 @@
         },
         {
             "name": "dasprid/enum",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DASPRiD/Enum.git",
-                "reference": "6ccc0d7141a7f149e3c56cb0ce5f05d9152cfd07"
+                "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/6ccc0d7141a7f149e3c56cb0ce5f05d9152cfd07",
-                "reference": "6ccc0d7141a7f149e3c56cb0ce5f05d9152cfd07",
+                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/5abf82f213618696dda8e3bf6f64dd042d8542b2",
+                "reference": "5abf82f213618696dda8e3bf6f64dd042d8542b2",
                 "shasum": ""
             },
             "require-dev": {
@@ -334,7 +334,7 @@
                 "enum",
                 "map"
             ],
-            "time": "2020-07-30T16:37:13+00:00"
+            "time": "2020-10-02T16:03:48+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1228,21 +1228,22 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.4.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "a255ce7e12601eb2b4972397c9f94a3e4ca13d32"
+                "reference": "395d4326b04a112412368fdffb6e66809bef5c2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/a255ce7e12601eb2b4972397c9f94a3e4ca13d32",
-                "reference": "a255ce7e12601eb2b4972397c9f94a3e4ca13d32",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/395d4326b04a112412368fdffb6e66809bef5c2a",
+                "reference": "395d4326b04a112412368fdffb6e66809bef5c2a",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^2.0",
                 "ext-json": "*",
+                "illuminate/support": "^8.0",
                 "php": "^7.3",
                 "pragmarx/google2fa": "^7.0|^8.0"
             },
@@ -1282,7 +1283,7 @@
                 "auth",
                 "laravel"
             ],
-            "time": "2020-09-14T18:51:28+00:00"
+            "time": "2020-09-29T17:35:46+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1449,16 +1450,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v1.2.1",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "9dd74e79fe09c570eb7a6bb4f00eac2c0dc3ed5f"
+                "reference": "6e4885f81cb863959f2ff101d170eed6d33ce7be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/9dd74e79fe09c570eb7a6bb4f00eac2c0dc3ed5f",
-                "reference": "9dd74e79fe09c570eb7a6bb4f00eac2c0dc3ed5f",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/6e4885f81cb863959f2ff101d170eed6d33ce7be",
+                "reference": "6e4885f81cb863959f2ff101d170eed6d33ce7be",
                 "shasum": ""
             },
             "require": {
@@ -1507,7 +1508,7 @@
                 "laravel",
                 "tailwind"
             ],
-            "time": "2020-09-15T20:17:25+00:00"
+            "time": "2020-09-29T17:46:46+00:00"
         },
         {
             "name": "laravel/sanctum",
