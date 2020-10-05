@@ -100,6 +100,10 @@ class MachineController extends Controller
     public function destroy(Machine $machine)
     {
         //
+        foreach ($machine->services as $service) {
+            # code...
+            $service->delete();
+        }
         $machine->delete();
         return redirect('machines');
     }
