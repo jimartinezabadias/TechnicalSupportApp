@@ -81,9 +81,18 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(CreateServiceRequest $request, Service $service)
     {
         //
+        $input = $request->all();
+        $service->machine_id = $input['machine_id'];
+        $service->date = $input['date'];
+        $service->failure = $input['failure'];
+        $service->price = $input['price'];
+        $service->failure_description = $input['failure_description'];
+        $service->service_description = $input['service_description'];
+        $service->save();
+        return redirect('services');
     }
 
     /**
