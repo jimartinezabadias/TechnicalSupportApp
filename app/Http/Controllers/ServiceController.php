@@ -43,7 +43,7 @@ class ServiceController extends Controller
     {
         //
         $input = $request->all();
-        $service = Service::create($input);
+        Service::create($input);
         return redirect('services');
     }
 

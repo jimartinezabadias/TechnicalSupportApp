@@ -43,7 +43,7 @@ class MachineController extends Controller
     {
         //
         $input = $request->all();
-        $machine = Machine::create($input);
+        Machine::create($input);
         return redirect('machines');
     }
 
