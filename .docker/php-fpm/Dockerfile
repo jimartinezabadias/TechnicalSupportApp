@@ -1,6 +1,8 @@
+FROM mlocati/php-extension-installer as extensions
+
 FROM php:7.4.8-fpm-alpine3.12 
 
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
+COPY --from=extensions /usr/bin/install-php-extensions /usr/bin/
 
 RUN install-php-extensions \
     bcmath \
