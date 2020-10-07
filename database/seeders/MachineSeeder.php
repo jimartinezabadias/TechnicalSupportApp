@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Machine;
+use App\Models\Service;
 
 class MachineSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class MachineSeeder extends Seeder
      */
     public function run()
     {
-        Machine::factory(4)->create();
+        // Machine::factory(4)->create();
+        Machine::factory()
+            ->has(Service::factory()->count(3))
+            ->create();
     }
 }
