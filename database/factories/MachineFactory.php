@@ -24,8 +24,8 @@ class MachineFactory extends Factory
     {
 
         return [
-            'owner' => $this->faker->name,
-            'model' => $this->faker->name,
+            'owner' => $this->faker->name(),
+            'model' => $this->faker->name(),
             'trademark' => $this->faker->company,
             'type' => $this->faker->randomElement(['Printer','Plotter'])
         ];

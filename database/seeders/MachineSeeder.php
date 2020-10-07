@@ -17,7 +17,7 @@ class MachineSeeder extends Seeder
     {
         // Machine::factory(4)->create();
         Machine::factory()
-            ->has(Service::factory())
+            ->has(Service::factory()->count(3))
             ->create();
     }
 }
