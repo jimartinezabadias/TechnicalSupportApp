@@ -3,13 +3,12 @@
 namespace Tests\Unit;
 
 use App\Models\Machine;
-use PHPUnit\Framework\TestCase;
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Service;
+// use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class MachineTest extends TestCase
 {
-    
-    // use RefreshDatabase;
 
     /**
      * A basic unit test example.
@@ -18,21 +17,31 @@ class MachineTest extends TestCase
      */
     public function testMachineWithoutServices()
     {
-        $machine = Machine::create([
-            'owner' => 'nombre de owner', 
-            'model' => 'modelo de la maquina', 
-            'trademark' => 'marca de la maquina', 
-            'type' => 'tipo de maquina']);
 
-        // $services = $machine->services()->get();
+        $machine = Machine::factory()->create();
 
-        $owner = $machine->owner;
+        $services = $machine->services()->get();
 
-        // $this->assertEmpty($services);
+        $this->assertEmpty($services);
 
-        $this->assertTrue($owner == 'nombre de owner');
     }
 
+    /**
+     * A basic unit test example.
+     *
+     * @return void
+     */
+    public function testMachineWithServices()
+    {
 
+        $machine = Machine::factory()
+                            ->has(Service::factory()->count(3))
+                            ->create();
+
+        $services = $machine->services()->get();
+
+        $this->assertNotEmpty($services);
+
+    }
 
 }

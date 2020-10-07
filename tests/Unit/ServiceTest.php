@@ -2,8 +2,10 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+// use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use App\Models\Service;
+use App\Models\Machine;
 
 class ServiceTest extends TestCase
 {
@@ -15,18 +17,31 @@ class ServiceTest extends TestCase
     public function testServiceWithoutMachine()
     {
         
-        $service = new Service(
-            ['failure' => 'falla', 
-            'date' => now(), 
-            'price' => 3424, 
-            'failure_description' => 'descripcion de la falla', 
-            'service_description' => 'descripcion del trabajo realizado']);
+        $service = Service::factory()->create();
 
-        // $machine = $service->machine()->get();
+        $machine = $service->machine()->get();
 
-        // $this->assertEmpty($machine);
+        $this->assertEmpty($machine);
+
+    }
+
+    /**
+     * A basic unit test example.
+     *
+     * @return void
+     */
+    public function testServiceWithMachine()
+    {
         
-        $this->assertTrue(true);
+        $service = Service::factory()->create();
+
+        $machine = Machine::factory()->create();
+        
+        $service->machine()->associate($machine);
+
+        $machine = $service->machine()->get();
+
+        $this->assertNotEmpty($machine);
 
     }
 }
