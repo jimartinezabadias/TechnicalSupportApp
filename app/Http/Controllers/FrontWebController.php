@@ -9,9 +9,15 @@ class FrontWebController extends Controller
 {
     //
 
-    public static function index()
+    public static function index(Request $request)
     {
-        $machines = Machine::paginate(5);
+        $search = $request->get('search');
+
+        $machines = Machine::where('type','iLIKE', $search)
+            ->orWhere('owner','iLIKE', $search)
+            ->orWhere('model','iLIKE', $search)
+            ->paginate(5);
+        
         return view('frontweb.index', [
             'machines' => $machines
         ]);
