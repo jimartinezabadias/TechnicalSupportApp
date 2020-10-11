@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontWebController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ServiceController;
 
@@ -15,9 +16,14 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return FrontWebController::index();
 });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
