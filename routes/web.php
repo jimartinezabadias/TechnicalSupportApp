@@ -20,9 +20,7 @@ use App\Http\Controllers\ServiceController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return FrontWebController::index();
-});
+Route::get('/', [FrontWebController::class, 'index'] )->name('index');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
