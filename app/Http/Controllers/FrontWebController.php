@@ -11,7 +11,7 @@ class FrontWebController extends Controller
 
     public static function index()
     {
-        $machines = Machine::all();
+        $machines = Machine::paginate(5);
         return view('frontweb.index', [
             'machines' => $machines
         ]);

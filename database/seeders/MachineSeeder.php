@@ -16,7 +16,7 @@ class MachineSeeder extends Seeder
     public function run()
     {
         // Machine::factory(4)->create();
-        Machine::factory()
+        Machine::factory(20)
             ->has(Service::factory()->count(3))
             ->create();
     }
