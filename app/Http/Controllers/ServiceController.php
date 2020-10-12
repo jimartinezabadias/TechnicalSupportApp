@@ -14,10 +14,17 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $search = $request->get('search');
+
         $services = Service::with('machine')
+            ->whereHas('machine', function ($query) use ($search) {
+                return $query->where('owner','iLIKE',$search)
+                            ->orWhere('model','iLIKE',$search);
+            })
+            ->orWhere('failure','iLIKE', $search)
             ->orderBy('date','desc')
             ->paginate(10);
         return view('services.index', [ 'services' => $services ]);
