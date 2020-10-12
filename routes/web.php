@@ -21,6 +21,8 @@ use App\Http\Controllers\ServiceController;
 // });
 
 Route::get('/', [FrontWebController::class, 'index'] )->name('index');
+Route::get('/machine-history/{machine_id}', [FrontWebController::class, 'machineHistory'] )
+    ->name('machine-history');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

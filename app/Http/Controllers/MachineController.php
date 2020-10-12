@@ -62,8 +62,8 @@ class MachineController extends Controller
     public function show(Machine $machine)
     {
         //
-        $machineWithCategory = Machine::with('services')->find($machine->id);
-        return view('machines.show', [ 'machine' => $machineWithCategory ] );
+        $machineWithServices = Machine::with('services')->find($machine->id);
+        return view('machines.show', [ 'machine' => $machineWithServices ] );
     }
 
     /**

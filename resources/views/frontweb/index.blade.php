@@ -154,7 +154,7 @@
                                     </span>
                                 </td> -->
                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                    <a href="{{ route('machines.show', $machine->id ) }}" class="text-indigo-600 hover:text-indigo-900">
+                                    <a href="{{ route('machine-history', $machine->id ) }}" class="text-indigo-600 hover:text-indigo-900">
                                     View</a>
                                 </td>
                             </tr>

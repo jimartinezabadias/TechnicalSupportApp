@@ -29,8 +29,8 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6">
                     <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                         
-                        <div class="lg:w-0 lg:flex-1">
-                            <a href="#" class="flex">
+                        <div class="lg:w-0 flex-1">
+                            <a href="{{ route('index') }}" class="flex">
                                 <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg" alt="Workflow">
                             </a>
                         </div>
@@ -46,7 +46,7 @@
 
                         <nav class="hidden md:flex space-x-10">
 
-                            <a href="#" class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
+                            <a href="{{ route('index') }}" class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
                                 Machines
                             </a>
 
