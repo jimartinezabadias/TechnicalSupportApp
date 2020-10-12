@@ -60,12 +60,12 @@
                     </dd>
                 </div>
                 
-                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                     <dt class="text-sm leading-5 font-medium text-gray-500">
                     Services
                     </dt>
                     <dd class="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                        <ul class="border border-gray-200 rounded-md">
+                        <ul class="bg-white border border-gray-200 rounded-md">
                             @foreach( $machine['services'] as $service )
                             <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
                                 <div class="w-0 flex-1 flex items-center">

@@ -106,7 +106,7 @@
                                 Model
                             </th>
                             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Status
+                                Trademark
                             </th>
                             <th class="px-6 py-3 bg-gray-50"></th>
                             </tr>
@@ -118,22 +118,24 @@
                                     <div class="text-sm leading-5 font-medium text-gray-900">
                                         {{ $machine->owner }}
                                     </div>
-                                    <div class="text-sm leading-5 text-gray-500">
+                                    <!-- <div class="text-sm leading-5 text-gray-500">
                                         jane.cooper@example.com
-                                    </div>
+                                    </div> -->
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                     {{ $machine->type }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap">
                                     <div class="text-sm leading-5 text-gray-900">{{ $machine->model }}</div>
-                                    <div class="text-sm leading-5 text-gray-500">{{ $machine->trademark }}</div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap">
+                                    <div class="text-sm leading-5 text-gray-500">{{ $machine->trademark }}</div>
+                                </td>
+                                <!-- <td class="px-6 py-4 whitespace-no-wrap">
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                         Functional
                                     </span>
-                                </td>
+                                </td> -->
                                 <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                                     <a href="{{ route('machines.show', $machine->id ) }}" class="text-indigo-600 hover:text-indigo-900">View</a>
                                 </td>
