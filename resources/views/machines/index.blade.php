@@ -142,6 +142,9 @@
                             <!-- More rows... -->
                         </tbody>
                     </table>
+
+                    {{ $machines->links() }}
+                    
                 </div>
             </div>
         </div>

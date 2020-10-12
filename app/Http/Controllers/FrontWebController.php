@@ -16,7 +16,7 @@ class FrontWebController extends Controller
         $machines = Machine::where('type','iLIKE', $search)
             ->orWhere('owner','iLIKE', $search)
             ->orWhere('model','iLIKE', $search)
-            ->paginate(5);
+            ->paginate(10);
         
         return view('frontweb.index', [
             'machines' => $machines
