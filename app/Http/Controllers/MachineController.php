@@ -13,10 +13,16 @@ class MachineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $machines = Machine::paginate(10);
+        $search = $request->get('search');
+
+        $machines = Machine::where('type','iLIKE', $search)
+            ->orWhere('owner','iLIKE', $search)
+            ->orWhere('model','iLIKE', $search)
+            ->paginate(10);
+            
         return view('machines.index', [
             'machines' => $machines
         ]);
