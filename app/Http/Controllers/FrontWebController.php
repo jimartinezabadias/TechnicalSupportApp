@@ -23,5 +23,14 @@ class FrontWebController extends Controller
         ]);
     }
 
+    public static function machineHistory($machine_id)
+    {
+        $machineWithServices = Machine::with('services')->find($machine_id);
+
+        return view('frontweb.machine-history', [
+            'machine' => $machineWithServices
+        ]);
+    }
+
 
 }
