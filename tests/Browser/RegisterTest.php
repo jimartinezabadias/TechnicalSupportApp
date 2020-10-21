@@ -29,7 +29,7 @@ class RegisterTest extends DuskTestCase
                     ->type('password', '12345678')
                     ->type('password_confirmation', '12345678')
                     ->press('REGISTER')
-                    ->assertSee('Dashboard');
+                    ->assertSee('All Machines');
             
             $browser->visit('/user/profile')
                     ->assertSee('Last Name');

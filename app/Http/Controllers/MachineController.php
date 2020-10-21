@@ -18,9 +18,10 @@ class MachineController extends Controller
         //
         $search = $request->get('search');
 
-        $machines = Machine::where('type','iLIKE', $search)
-            ->orWhere('owner','iLIKE', $search)
-            ->orWhere('model','iLIKE', $search)
+        $machines = Machine::where('type','iLIKE', "%{$search}%" )
+            ->orWhere('owner','iLIKE', "%{$search}%" )
+            ->orWhere('model','iLIKE', "%{$search}%" )
+            ->orWhere('trademark','iLIKE', "%{$search}%" )
             ->paginate(10);
             
         return view('machines.index', [
