@@ -13,7 +13,7 @@ class CreatesApplication extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testAppCreated()
     {
         $response = $this->get('/');
 

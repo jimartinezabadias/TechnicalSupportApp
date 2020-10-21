@@ -25,14 +25,16 @@ class FrontWebTest extends DuskTestCase
     
     public function testMachineHistory()
     {
-        Machine::factory()
+        $machine = Machine::factory()
             ->has(Service::factory()->count(3))
             ->create();
+
+        $machine_id = $machine->id;
         
-        $this->browse(function (Browser $browser) {
+        $this->browse(function (Browser $browser) use ($machine_id){
             $browser->visit('/')
                 ->clickLink('View')
-                ->assertPathIs('/machine-history/1');
+                ->assertPathIs("/machine-history/{$machine_id}");
         });
 
         $this->browse(function (Browser $browser) {
