@@ -31,7 +31,7 @@ class LoginTest extends DuskTestCase
                     ->type('email', $user->email)
                     ->type('password','12345678')
                     ->press('LOGIN')
-                    ->assertSee('Dashboard');
+                    ->assertSee('All Machines');
         });
 
     }
