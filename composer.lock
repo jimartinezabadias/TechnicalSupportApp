@@ -1228,16 +1228,16 @@
         },
         {
             "name": "laravel/fortify",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/fortify.git",
-                "reference": "287378edfb3c65b01a30c4486e069a5924bff5d9"
+                "reference": "55e4b0fc750d3d2abed4c314105db269043e6cb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/287378edfb3c65b01a30c4486e069a5924bff5d9",
-                "reference": "287378edfb3c65b01a30c4486e069a5924bff5d9",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/55e4b0fc750d3d2abed4c314105db269043e6cb7",
+                "reference": "55e4b0fc750d3d2abed4c314105db269043e6cb7",
                 "shasum": ""
             },
             "require": {
@@ -1283,7 +1283,7 @@
                 "auth",
                 "laravel"
             ],
-            "time": "2020-10-05T14:58:24+00:00"
+            "time": "2020-10-20T15:44:56+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1450,16 +1450,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v1.4.1",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "afc89ad834d179dd39a0b86815b48dac8f039f69"
+                "reference": "066ccf58651769573f77239d69112edf2af94a1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/afc89ad834d179dd39a0b86815b48dac8f039f69",
-                "reference": "afc89ad834d179dd39a0b86815b48dac8f039f69",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/066ccf58651769573f77239d69112edf2af94a1a",
+                "reference": "066ccf58651769573f77239d69112edf2af94a1a",
                 "shasum": ""
             },
             "require": {
@@ -1508,7 +1508,7 @@
                 "laravel",
                 "tailwind"
             ],
-            "time": "2020-10-13T13:48:35+00:00"
+            "time": "2020-10-20T18:01:40+00:00"
         },
         {
             "name": "laravel/sanctum",
