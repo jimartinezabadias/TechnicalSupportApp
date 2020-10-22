@@ -50,8 +50,15 @@ class MachineController extends Controller
     {
         //
         $input = $request->all();
-        $input['user_id'] = $request->user()->id;
-        $new_machine = Machine::create($input);
+        
+        $new_machine = new Machine;
+        $new_machine->owner = $input['owner'];
+        $new_machine->model = $input['model'];
+        $new_machine->trademark = $input['trademark'];
+        $new_machine->type = $input['type'];
+        $new_machine->user_id = $request->user()->id;
+        
+        $new_machine->save();
 
         return redirect( route('machines.show', $new_machine->id ) );
     }
