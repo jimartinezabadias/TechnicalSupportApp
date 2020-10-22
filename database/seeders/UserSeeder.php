@@ -15,15 +15,17 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Test',
-            'email' => 'test@laravel.com',
-            'password' => bcrypt('1234')
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('1234'),
+            'role' => 'admin'
         ]);
 
         User::create([
             'name' => 'Cliente',
-            'email' => 'cliente@laravel.com',
-            'password' => bcrypt('1234')
+            'email' => 'cliente@cliente.com',
+            'password' => bcrypt('1234'),
+            'role' => 'client'
         ]);
 
     }
