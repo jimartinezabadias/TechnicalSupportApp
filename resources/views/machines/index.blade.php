@@ -131,12 +131,23 @@
                             @foreach($machines as $machine)
                             <tr>
                                 <td class="px-6 py-4 whitespace-no-wrap">
-                                    <div class="text-sm leading-5 font-medium text-gray-900">
-                                        {{ $machine->owner }}
+                                    <div class="flex items-center">
+                                        @isset($machine->user) 
+                                        <div class="flex-shrink-0 h-10 w-10">
+                                            <img class="h-10 w-10 rounded-full" src="{{ $machine->user->profile_photo_url }}" alt="">
+                                        </div>
+                                        @endisset
+                                        <div class="ml-4">
+                                            <div class="text-sm leading-5 font-medium text-gray-900">
+                                                {{ $machine->owner }}
+                                            </div>
+                                            @isset($machine->user)
+                                            <div class="text-sm leading-5 text-gray-500">
+                                                {{ $machine->user->email }}
+                                            </div>
+                                            @endisset
+                                        </div>
                                     </div>
-                                    <!-- <div class="text-sm leading-5 text-gray-500">
-                                        jane.cooper@example.com
-                                    </div> -->
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
                                     {{ $machine->type }}

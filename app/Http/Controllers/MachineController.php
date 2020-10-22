@@ -18,7 +18,8 @@ class MachineController extends Controller
         //
         $search = $request->get('search');
 
-        $machines = Machine::where('type','iLIKE', "%{$search}%" )
+        $machines = Machine::with('user')
+            ->where('type','iLIKE', "%{$search}%" )
             ->orWhere('owner','iLIKE', "%{$search}%" )
             ->orWhere('model','iLIKE', "%{$search}%" )
             ->orWhere('trademark','iLIKE', "%{$search}%" )
