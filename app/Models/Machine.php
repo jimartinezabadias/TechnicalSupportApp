@@ -9,7 +9,7 @@ class Machine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['owner','model','trademark','type'];
+    protected $fillable = ['owner','model','trademark','type','user_id'];
 
     public function services(){
 
