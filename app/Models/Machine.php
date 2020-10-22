@@ -16,4 +16,10 @@ class Machine extends Model
         return $this->hasMany('App\Models\Service');      
 
     }
+
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');      
+
+    }
 }
