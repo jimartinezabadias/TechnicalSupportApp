@@ -53,7 +53,9 @@ class MachinePolicy
      */
     public function update(User $user, Machine $machine)
     {
-        return true;
+        if ($user->role === 'admin')
+            return true;
+        return $user->id === $machine->user_id;
     }
 
     /**
@@ -65,7 +67,9 @@ class MachinePolicy
      */
     public function delete(User $user, Machine $machine)
     {
-        return true;
+        if ($user->role === 'admin')
+            return true;
+        return $user->id === $machine->user_id;
     }
 
     /**
