@@ -86,6 +86,7 @@ class MachineController extends Controller
     public function edit(Machine $machine)
     {
         //
+        $this->authorize('update',$machine);
         return view('machines.edit', ['machine' => $machine] );
     }
 
@@ -99,13 +100,14 @@ class MachineController extends Controller
     public function update(CreateMachineRequest $request, Machine $machine)
     {
         //
+        $this->authorize('update',$machine);
         $input = $request->all();
         $machine->owner = $input['owner'];
         $machine->type = $input['type'];
         $machine->model = $input['model'];
         $machine->trademark = $input['trademark'];
         $machine->save();
-        return redirect('machines');
+        return back()->with('success','Machine updated');
     }
 
     /**
@@ -117,6 +119,7 @@ class MachineController extends Controller
     public function destroy(Machine $machine)
     {
         //
+        $this->authorize('delete',$machine);
         foreach ($machine->services as $service) {
             # code...
             $service->delete();
