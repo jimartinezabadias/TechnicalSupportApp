@@ -30,7 +30,9 @@ class MachinePolicy
      */
     public function view(User $user, Machine $machine)
     {
-        return true;
+        if ($user->role === 'admin')
+            return true;
+        return $user->id === $machine->user_id;
     }
 
     /**
