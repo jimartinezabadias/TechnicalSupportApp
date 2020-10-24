@@ -48,7 +48,7 @@ class PrivateUrlsTest extends TestCase
         $response = $this->actingAs($user)
                          ->get('/machines');
 
-        $response->assertSee('All Machines');
+        $response->assertSee('My Machines');
     }
 
     /**
