@@ -63,4 +63,8 @@ class User extends Authenticatable
     public function machines(){
         return $this->hasMany('App\Models\Machine');
     }
+
+    public function isAdmin(){
+        return $this->role === 'admin';
+    }
 }

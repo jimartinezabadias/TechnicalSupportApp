@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class MachineController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,14 +17,31 @@ class MachineController extends Controller
     public function index(Request $request)
     {
         //
+        // $machines = [];
         $search = $request->get('search');
 
-        $machines = Machine::with('user')
+        $user = auth()->user();
+
+        if ( $user->isAdmin() )
+        {
+            $machines = Machine::with('user')
             ->where('type','iLIKE', "%{$search}%" )
             ->orWhere('owner','iLIKE', "%{$search}%" )
             ->orWhere('model','iLIKE', "%{$search}%" )
             ->orWhere('trademark','iLIKE', "%{$search}%" )
             ->paginate(10);
+        } 
+        else 
+        {
+            $machines = $user->machines()
+            ->where( function ($query) use ($search) {
+                return $query->where('type','iLIKE', "%{$search}%" )
+                ->orWhere('owner','iLIKE', "%{$search}%" )
+                ->orWhere('model','iLIKE', "%{$search}%" )
+                ->orWhere('trademark','iLIKE', "%{$search}%" );
+            })
+            ->paginate(10);
+        }
             
         return view('machines.index', [
             'machines' => $machines
@@ -73,6 +91,7 @@ class MachineController extends Controller
     public function show(Machine $machine)
     {
         //
+        // $this->authorize('view',$machine);
         $machineWithServices = Machine::with('services')->find($machine->id);
         return view('machines.show', [ 'machine' => $machineWithServices ] );
     }
