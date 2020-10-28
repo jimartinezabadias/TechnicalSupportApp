@@ -21,12 +21,8 @@ class ServiceTest extends TestCase
 
     }
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testServiceWithMachine()
+
+    public function testServiceCanAssociateMachine()
     {
         
         $service = Service::factory()->create();

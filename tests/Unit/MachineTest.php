@@ -22,12 +22,7 @@ class MachineTest extends TestCase
 
     }
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testMachineWithServices()
+    public function testMachineCanHaveManyServices()
     {
 
         $machine = Machine::factory()
