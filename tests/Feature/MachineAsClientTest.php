@@ -16,7 +16,7 @@ class MachineAsClientTest extends TestCase
     //     $this->client = User::factory()->create(['role' => 'client']);
     // }
 
-    public function testClientCanViewTheirMachines()
+    public function testClientCanViewAllTheirMachines()
     {
         $client = User::factory()->create(['role' => 'client']);
         
@@ -78,7 +78,7 @@ class MachineAsClientTest extends TestCase
     //     $response->assertSee('Create Machine');
     // }
 
-    public function testClientCanAccessTheirMachines()
+    public function testClientCanViewTheirMachines()
     {
         $client = User::factory()
             ->has(Machine::factory())
@@ -94,7 +94,7 @@ class MachineAsClientTest extends TestCase
         $response->assertSee($machine->trademark);
     }
     
-    public function testClientCantAccessOtherMachines()
+    public function testClientCantViewOtherMachines()
     {
         $client = User::factory()->create(['role' => 'client']);
         

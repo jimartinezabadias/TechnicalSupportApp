@@ -18,25 +18,28 @@ class MachineAsAdminTest extends TestCase
 
     public function testAdminCanViewAllMachines()
     {
-        $client = User::factory()->create(['role' => 'admin']);
+        $admin = User::factory()->create(['role' => 'admin']);
         
-        $response = $this->actingAs($client)
+        $response = $this->actingAs($admin)
                         ->get( route('machines.index') );
 
+        $response->assertSuccessful();
         $response->assertSee('All Machines');
-        $response->assertSee('Create Machine');
     }
 
-    public function testAdminCanCreateAMachines()
+    public function testAdminCanCreateMachines()
     {
-        $client = User::factory()->create(['role' => 'admin']);
+        $admin = User::factory()->create(['role' => 'admin']);
 
-        $response = $this->actingAs($client)
+        $response = $this->actingAs($admin)
                         ->get( route('machines.create' ) );
 
+        $response->assertSuccessful();
         $response->assertSee('Create Machine');
     }
-    
+
+    // Ver como pasarle una request al store
+    //
     // public function testAdminCanStoreMachines()
     // {
     //     $client = User::factory()->create(['role' => 'client']);
@@ -47,19 +50,80 @@ class MachineAsAdminTest extends TestCase
     //     $response->assertSee('Create Machine');
     // }
 
-    // public function testClientCanAccessTheirMachines()
-    // {
-    //     $client = User::factory()->create(['role' => 'client']);
-    //     $machine = Machine::factory()->create();
+    public function testAdminCanViewAnyMachine()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
         
-    //     $machine->user()->associate($client);
+        $client = User::factory()
+            ->has(Machine::factory())
+            ->create(['role' => 'client']);
         
-    //     $response = $this->actingAs($client)
-    //                     ->get( route('machines.show', $machine->id ) );
+        $clients_machine = $client->machines()->first();
+        $other_machine = Machine::factory()->create();
+        
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.show', $clients_machine->id ) );
 
-    //     $response->assertSee($machine->type);
-    //     $response->assertSee($machine->model);
-    //     $response->assertSee($machine->trademark);
-    // }
+        $response->assertSuccessful();
+        $response->assertSee($clients_machine->type);
+        $response->assertSee($clients_machine->model);
+        $response->assertSee($clients_machine->trademark);
+
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.show', $other_machine->id ) );
+
+        $response->assertSuccessful();
+        $response->assertSee($other_machine->type);
+        $response->assertSee($other_machine->model);
+        $response->assertSee($other_machine->trademark);
+    }
+
+    public function testAdminCanEditAnyMachine()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $client = User::factory()
+            ->has(Machine::factory())
+            ->create(['role' => 'client']);
+
+        $clients_machine = $client->machines()->first();
+        $other_machine = Machine::factory()->create();
+        
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.edit', $clients_machine->id ) );
+
+        $response->assertSuccessful();
+        
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.edit', $other_machine->id ) );
+
+        $response->assertSuccessful();
+
+
+    }
+
+    public function testAdminCanDeleteAnyMachines()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        
+        $client = User::factory()
+            ->has(Machine::factory())
+            ->create(['role' => 'client']);
+
+        $clients_machine = $client->machines()->first();
+        $other_machine = Machine::factory()->create();
+        
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.destroy', $clients_machine->id ) );
+
+        $response->assertSuccessful();
+
+        $response = $this->actingAs($admin)
+                        ->get( route('machines.destroy', $other_machine->id ) );
+
+        $response->assertSuccessful();
+    }
+
     
+
 }
