@@ -7,7 +7,23 @@ on:
 
 jobs:
   laravel-tests:
+    
     runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres:12.3-alpine
+        env:
+            POSTGRES_DB: laravel
+            POSTGRES_USER: myuser
+            POSTGRES_PASSWORD: thisisasecretpassword
+        ports:
+          - 54321:5432
+    
+    env:
+        DB_USERNAME: myuser
+        DB_PASSWORD: thisisasecretpassword
+  
     steps:
       - uses: actions/checkout@v2
 
@@ -23,21 +39,10 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-      - name: Create Database
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
-
       - name: Run Migrations
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
         run: php artisan migrate
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
         
       - uses: codecov/codecov-action@v1

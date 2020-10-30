@@ -55,7 +55,7 @@ class MachineController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create',App\Models\Machine::class);
         return view('machines.create');
     }
 
@@ -68,6 +68,7 @@ class MachineController extends Controller
     public function store(CreateMachineRequest $request)
     {
         //
+        $this->authorize('create',App\Models\Machine::class);
         $input = $request->all();
         
         $new_machine = new Machine;
@@ -91,7 +92,7 @@ class MachineController extends Controller
     public function show(Machine $machine)
     {
         //
-        // $this->authorize('view',$machine);
+        $this->authorize('view',$machine);
         $machineWithServices = Machine::with('services')->find($machine->id);
         return view('machines.show', [ 'machine' => $machineWithServices ] );
     }
@@ -138,9 +139,9 @@ class MachineController extends Controller
     public function destroy(Machine $machine)
     {
         //
+        // $this->authorize('delete',App\Models\Machine::class);
         $this->authorize('delete',$machine);
         foreach ($machine->services as $service) {
-            # code...
             $service->delete();
         }
         $machine->delete();

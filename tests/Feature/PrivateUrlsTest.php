@@ -12,56 +12,26 @@ class PrivateUrlsTest extends TestCase
    
     private $loginUrl = "/login";
     
-    /**
-     * Non logged in must redirect.
-     *
-     * @return void
-     */
-    public function testMachineNotLoggedIn()
+    public function testAccessMachineRedirectWhenNotLoggedIn()
     {
-        $response = $this->get('/machines');
+        $response = $this->get( route('machines.index') );
 
         $response->assertRedirect($this->loginUrl);
     }
 
-    /**
-     * Non logged in must redirect.
-     *
-     * @return void
-     */
-    public function testServiceNotLoggedIn()
+    public function testAccessServiceRedirectWhenNotLoggedIn()
     {
-        $response = $this->get('/services');
+        $response = $this->get( route('services.index') );
 
         $response->assertRedirect($this->loginUrl);
     }
 
-    /**
-     *  Logged in must show Machines view.
-     *
-     * @return void
-     */
-    public function testMachineLoggedIn()
+    public function testAccessServices()
     {
         $user = User::factory()->create();
         
         $response = $this->actingAs($user)
-                         ->get('/machines');
-
-        $response->assertSee('My Machines');
-    }
-
-    /**
-     *  Logged in must show Machines view.
-     *
-     * @return void
-     */
-    public function testServiceLoggedIn()
-    {
-        $user = User::factory()->create();
-        
-        $response = $this->actingAs($user)
-                         ->get('/services');
+                         ->get( route('services.index') );
 
         $response->assertSee('All Services');
     }
