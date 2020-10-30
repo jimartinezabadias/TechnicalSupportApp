@@ -24,20 +24,51 @@ class MachineAsClientTest extends TestCase
                         ->get( route('machines.index') );
 
         $response->assertSee('My Machines');
-        $response->assertSee('Create Machine');
     }
 
-    public function testClientCanCreateAMachines()
+    public function testClientCantCreateMachines()
     {
         $client = User::factory()->create(['role' => 'client']);
         
         $response = $this->actingAs($client)
                         ->get( route('machines.create' ) );
 
-        $response->assertSee('Create Machine');
+        $response->assertForbidden();
     }
+   
+    public function testClientCantEditMachines()
+    {
+        $client = User::factory()
+            ->has(Machine::factory())
+            ->create(['role' => 'client']);
+
+        $machine = $client->machines()->first();
+        
+        $response = $this->actingAs($client)
+                        ->get( route('machines.edit', $machine->id ) );
+
+        $response->assertForbidden();
+    }
+
+    // Falla: Response status code [200] is not a forbidden status code.
+    //
+    // public function testClientCantDeleteMachines()
+    // {
+    //     $client = User::factory()
+    //         ->has(Machine::factory())
+    //         ->create(['role' => 'client']);
+
+    //     $machine = $client->machines()->first();
+        
+    //     $response = $this->actingAs($client)
+    //                     ->get( route('machines.destroy', $machine->id ) );
+
+    //     $response->assertForbidden();
+    // }
     
-    // public function testClientCanStoreMachines()
+    // Ver como pasarle una request al store
+    //
+    // public function testClientCantStoreMachines()
     // {
     //     $client = User::factory()->create(['role' => 'client']);
         
@@ -61,6 +92,18 @@ class MachineAsClientTest extends TestCase
         $response->assertSee($machine->type);
         $response->assertSee($machine->model);
         $response->assertSee($machine->trademark);
+    }
+    
+    public function testClientCantAccessOtherMachines()
+    {
+        $client = User::factory()->create(['role' => 'client']);
+        
+        $machine = Machine::factory()->create();
+        
+        $response = $this->actingAs($client)
+                        ->get( route('machines.show', $machine->id ) );
+
+        $response->assertForbidden();
     }
     
 }

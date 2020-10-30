@@ -30,7 +30,7 @@ class MachinePolicy
      */
     public function view(User $user, Machine $machine)
     {
-        if ($user->role === 'admin')
+        if ($user->isAdmin())
             return true;
         return $user->id === $machine->user_id;
     }
@@ -43,7 +43,7 @@ class MachinePolicy
      */
     public function create(User $user)
     {
-        return true;
+        return $user->isAdmin();
     }
 
     /**
@@ -55,9 +55,7 @@ class MachinePolicy
      */
     public function update(User $user, Machine $machine)
     {
-        if ($user->role === 'admin')
-            return true;
-        return $user->id === $machine->user_id;
+        return $user->isAdmin();
     }
 
     /**
@@ -69,9 +67,7 @@ class MachinePolicy
      */
     public function delete(User $user, Machine $machine)
     {
-        if ($user->role === 'admin')
-            return true;
-        return $user->id === $machine->user_id;
+        return $user->isAdmin();
     }
 
     /**
@@ -83,7 +79,7 @@ class MachinePolicy
      */
     public function restore(User $user, Machine $machine)
     {
-        return true;
+        return $user->isAdmin();
     }
 
     /**
@@ -95,6 +91,6 @@ class MachinePolicy
      */
     public function forceDelete(User $user, Machine $machine)
     {
-        return true;
+        return $user->isAdmin();
     }
 }

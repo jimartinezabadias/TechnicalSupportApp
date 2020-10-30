@@ -9,12 +9,8 @@ use App\Models\Machine;
 
 class ServiceTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testServiceWithoutMachine()
+    
+    public function testServiceCanHaveNoMachine()
     {
         
         $service = Service::factory()->create();
