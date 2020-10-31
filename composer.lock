@@ -60,22 +60,22 @@
         },
         {
             "name": "bacon/bacon-qr-code",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bacon/BaconQrCode.git",
-                "reference": "add6d9ff97336b62f95a3b94f75cea4e085465b2"
+                "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/add6d9ff97336b62f95a3b94f75cea4e085465b2",
-                "reference": "add6d9ff97336b62f95a3b94f75cea4e085465b2",
+                "url": "https://api.github.com/repos/Bacon/BaconQrCode/zipball/3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
+                "reference": "3e9d791b67d0a2912922b7b7c7312f4b37af41e4",
                 "shasum": ""
             },
             "require": {
-                "dasprid/enum": "^1.0",
+                "dasprid/enum": "^1.0.3",
                 "ext-iconv": "*",
-                "php": "^7.1"
+                "php": "^7.1 || ^8.0"
             },
             "require-dev": {
                 "phly/keep-a-changelog": "^1.4",
@@ -105,7 +105,7 @@
             ],
             "description": "BaconQrCode is a QR code generator for PHP.",
             "homepage": "https://github.com/Bacon/BaconQrCode",
-            "time": "2020-07-30T16:40:58+00:00"
+            "time": "2020-10-30T02:02:47+00:00"
         },
         {
             "name": "brick/math",
@@ -1500,16 +1500,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v1.5.1",
+            "version": "v1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "5a1967bb1f0f73620313b9b9431ac122ef20c79c"
+                "reference": "872ba5d811f8451fd6b5f61a0422ac303e6f4048"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/5a1967bb1f0f73620313b9b9431ac122ef20c79c",
-                "reference": "5a1967bb1f0f73620313b9b9431ac122ef20c79c",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/872ba5d811f8451fd6b5f61a0422ac303e6f4048",
+                "reference": "872ba5d811f8451fd6b5f61a0422ac303e6f4048",
                 "shasum": ""
             },
             "require": {
@@ -1558,7 +1558,7 @@
                 "laravel",
                 "tailwind"
             ],
-            "time": "2020-10-21T17:02:54+00:00"
+            "time": "2020-10-27T21:28:35+00:00"
         },
         {
             "name": "laravel/sanctum",
