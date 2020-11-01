@@ -55,7 +55,7 @@ class MachineController extends Controller
      */
     public function create()
     {
-        $this->authorize('create');
+        $this->authorize('create',Machine::class);
         return view('machines.create');
     }
 

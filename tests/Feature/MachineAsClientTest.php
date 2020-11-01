@@ -53,7 +53,7 @@ class MachineAsClientTest extends TestCase
     }
 
     // Falla: Response status code [200] is not a forbidden status code.
-    //
+    
     // public function testClientCantDeleteMachines()
     // {
     //     $client = User::factory()
