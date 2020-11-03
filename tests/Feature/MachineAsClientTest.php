@@ -51,33 +51,44 @@ class MachineAsClientTest extends TestCase
 
         $response->assertForbidden();
     }
-
-    // Falla: Response status code [200] is not a forbidden status code.
     
-    // public function testClientCantDeleteMachines()
-    // {
-    //     $client = User::factory()
-    //         ->has(Machine::factory())
-    //         ->create(['role' => 'client']);
+    public function testClientCantDeleteMachines()
+    {
+        $client = User::factory()
+            ->has(Machine::factory())
+            ->create(['role' => 'client']);
 
-    //     $machine = $client->machines()->first();
+        $machine = $client->machines()->first();
+
+        $other_machine = Machine::factory()->create();
         
-    //     $response = $this->actingAs($client)
-    //                     ->get( route('machines.destroy', $machine->id ) );
+        $response = $this->actingAs($client)
+                        ->delete( route('machines.destroy', $machine->id ) );
 
-    //     $response->assertForbidden();
-    // }
+        $response->assertForbidden();
+        
+        $response = $this->actingAs($client)
+                        ->delete( route('machines.destroy', $other_machine->id ) );
+
+        $response->assertForbidden();
+    }
     
     // Ver como pasarle una request al store
-    //
+    
     // public function testClientCantStoreMachines()
     // {
     //     $client = User::factory()->create(['role' => 'client']);
+
+    //     $machine_data = Machine::factory()->newModel();
         
     //     $response = $this->actingAs($client)
-    //                     ->get( route('machines.store' ) );
-
-    //     $response->assertSee('Create Machine');
+    //                     ->post( route('machines.store', [
+    //                         'owner' => $machine_data->owner,
+    //                         'model' => $machine_data->model,
+    //                         'trademark' => $machine_data->trademark,
+    //                         'type' => $machine_data->type
+    //                     ]))
+    //                     ->assertForbidden();
     // }
 
     public function testClientCanViewTheirMachines()

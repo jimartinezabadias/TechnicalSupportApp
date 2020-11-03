@@ -68,7 +68,7 @@ class MachineController extends Controller
     public function store(CreateMachineRequest $request)
     {
         //
-        $this->authorize('create',App\Models\Machine::class);
+        $this->authorize('create',Machine::class);
         $input = $request->all();
         
         $new_machine = new Machine;
