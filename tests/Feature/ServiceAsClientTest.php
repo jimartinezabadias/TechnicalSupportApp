@@ -13,15 +13,15 @@ use Tests\TestCase;
 class ServiceAsClientTest extends TestCase
 {
 
-    // public function testClientCanViewTheirServices()
-    // {
-    //     $client = User::factory()->create(['role' => 'client']);
+    public function testClientCanViewTheirServices()
+    {
+        $client = User::factory()->create(['role' => 'client']);
         
-    //     $response = $this->actingAs($client)
-    //                     ->get( route('services.index') );
+        $response = $this->actingAs($client)
+                        ->get( route('services.index') );
 
-    //     $response->assertSuccessful();
-    //     $response->assertSee('My Services');
-    // }
+        $response->assertSuccessful();
+        $response->assertSee('My Services');
+    }
 
 }

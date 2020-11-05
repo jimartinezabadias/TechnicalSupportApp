@@ -6,9 +6,15 @@
     -->
     <div class="lg:flex lg:items-center lg:justify-between mb-6">
         <div class="flex-1 min-w-0">
+            @if ( Auth::user()->isAdmin() )
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
             All Services
             </h2>
+            @else
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:leading-9 sm:truncate">
+            My Services
+            </h2>
+            @endif
             <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
                 
                 <!-- Heroicon name: briefcase -->

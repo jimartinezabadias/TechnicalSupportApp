@@ -18,7 +18,7 @@ class MachineAsClientTest extends TestCase
 
     public function testClientCanViewAllTheirMachines()
     {
-        // se puede mejorar creando un cliente con maquinas
+        // mejorar creando un cliente con maquinas
         // y preguntando por los datos de las maquinas
         $client = User::factory()->create(['role' => 'client']);
         

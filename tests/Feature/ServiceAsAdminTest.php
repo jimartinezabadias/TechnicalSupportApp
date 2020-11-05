@@ -12,15 +12,15 @@ use Tests\TestCase;
 class ServiceAsAdminTest extends TestCase
 {
 
-    // public function testAdminCanViewAllServices()
-    // {
-    //     $admin = User::factory()->create(['role' => 'admin']);
+    public function testAdminCanViewAllServices()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
         
-    //     $response = $this->actingAs($admin)
-    //                     ->get( route('services.index') );
+        $response = $this->actingAs($admin)
+                        ->get( route('services.index') );
 
-    //     $response->assertSuccessful();
-    //     $response->assertSee('All Services');
-    // }
+        $response->assertSuccessful();
+        $response->assertSee('All Services');
+    }
 
 }

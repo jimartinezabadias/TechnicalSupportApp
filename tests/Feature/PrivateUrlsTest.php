@@ -25,15 +25,5 @@ class PrivateUrlsTest extends TestCase
 
         $response->assertRedirect($this->loginUrl);
     }
-
-    public function testAccessServices()
-    {
-        $user = User::factory()->create();
-        
-        $response = $this->actingAs($user)
-                         ->get( route('services.index') );
-
-        $response->assertSee('All Services');
-    }
     
 }
