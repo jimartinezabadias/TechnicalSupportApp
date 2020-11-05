@@ -17,6 +17,7 @@ class ServiceController extends Controller
     public function index(Request $request)
     {
         //
+
         $search = $request->get('search');
 
         $services = Service::with('machine')
