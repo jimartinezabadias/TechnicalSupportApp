@@ -27,7 +27,6 @@ class ServiceFactory extends Factory
 
         return [
             'machine_id' => Machine::factory()->create(),
-            // 'machine_id' => Machine::find($this->faker->numberBetween(1,4))->first(), 
             'failure' => $this->faker->sentence(1),
             'date' => $this->faker->date(),
             'price' => $this->faker->randomNumber(8,false),

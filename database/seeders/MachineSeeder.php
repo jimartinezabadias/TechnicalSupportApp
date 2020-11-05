@@ -9,16 +9,12 @@ use App\Models\User;
 
 class MachineSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    
     public function run()
     {
         // Machine::factory(4)->create();
-        Machine::factory(4)
-            ->has(Service::factory()->count(3))
+        Machine::factory()
+            ->has(Service::factory())
             ->create();
 
         
@@ -26,4 +22,5 @@ class MachineSeeder extends Seeder
         
         Machine::first()->user()->associate($client)->save();
     }
+    
 }
