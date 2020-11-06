@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Models\Machine;
 use App\Http\Requests\CreateServiceRequest;
 use Illuminate\Http\Request;
+// use App\Support\CustomCollection;
 
 class ServiceController extends Controller
 {
@@ -20,7 +21,11 @@ class ServiceController extends Controller
 
         $search = $request->get('search');
 
-        $services = Service::with('machine')
+        $user = auth()->user();
+
+        if ( $user->isAdmin() )
+        {
+            $services = Service::with('machine')
             ->whereHas('machine', function ($query) use ($search) {
                 return $query->where('owner','iLIKE', "%{$search}%" )
                             ->orWhere('model','iLIKE', "%{$search}%" );
@@ -28,6 +33,21 @@ class ServiceController extends Controller
             ->orWhere('failure','iLIKE', "%{$search}%" )
             ->orderBy('date','desc')
             ->paginate(10);
+        }
+        else
+        {
+            
+            $services = Service::with('machine')
+            ->whereHas('machine', function ($query) use ($user) {
+                return $query->where('user_id',$user->id);
+            })
+            // ->orWhere('failure','iLIKE', "%{$search}%" )
+            // ->orderBy('date','desc')
+            ->paginate(10);
+
+        }
+
+        
             
         return view('services.index', [ 'services' => $services ]);
     }

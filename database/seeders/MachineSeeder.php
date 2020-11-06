@@ -14,7 +14,6 @@ class MachineSeeder extends Seeder
     {
         // Machine::factory(4)->create();
         Machine::factory()
-            ->has(Service::factory())
             ->create();
 
         
@@ -22,5 +21,5 @@ class MachineSeeder extends Seeder
         
         Machine::first()->user()->associate($client)->save();
     }
-    
+
 }
