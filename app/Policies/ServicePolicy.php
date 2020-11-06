@@ -46,6 +46,7 @@ class ServicePolicy
     public function create(User $user)
     {
         //
+        return $user->isAdmin();
     }
 
     /**

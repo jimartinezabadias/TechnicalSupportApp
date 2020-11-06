@@ -30,6 +30,7 @@ class ServiceAsClientTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertSee('My Services');
+        $response->assertDontSee('Create Service');
         $response->assertSee($machine_1->model);
         $response->assertDontSee($machine_2->model);
 

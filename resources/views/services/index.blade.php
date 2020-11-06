@@ -90,6 +90,7 @@
 
             </div>
 
+            @can ('create',App\Models\Service::class)
             <span class="sm:ml-3 shadow-sm rounded-md">
                 <a href="{{ route('services.create') }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
                     <svg class="-ml-1 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -98,6 +99,7 @@
                     Create Service
                 </a>
             </span>
+            @endcan
 
         </div>
 

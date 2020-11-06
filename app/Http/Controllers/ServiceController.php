@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index(Request $request)
     {
         //
@@ -41,8 +37,6 @@ class ServiceController extends Controller
             ->whereHas('machine', function ($query) use ($user) {
                 return $query->where('user_id',$user->id);
             })
-            // ->orWhere('failure','iLIKE', "%{$search}%" )
-            // ->orderBy('date','desc')
             ->paginate(10);
 
         }
