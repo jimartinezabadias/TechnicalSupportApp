@@ -51,11 +51,10 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($machine_id)
     {
-        //
-        $machines = Machine::all();
-        return view('services.create', [ 'machines' => $machines ]);
+        $machine = Machine::find($machine_id);
+        return view('services.create', [ 'machine' => $machine ]);
     }
 
     /**
@@ -68,6 +67,7 @@ class ServiceController extends Controller
     {
         //
         $input = $request->all();
+        // dd($input);
         Service::create($input);
         return redirect('services');
     }

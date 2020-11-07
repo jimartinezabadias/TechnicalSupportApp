@@ -21,7 +21,6 @@ class ServiceAsAdminTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertSee('All Services');
-        $response->assertSee('Create Service');
     }
 
 }
