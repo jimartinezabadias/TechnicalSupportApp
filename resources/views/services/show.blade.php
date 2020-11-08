@@ -14,6 +14,7 @@
                 Personal details and application.
             </p> -->
 
+            @can ('update', $service)
             <span class="sm:ml-3 shadow-sm rounded-md">
                 <a href="{{ route('services.edit', $service->id ) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
                     <svg class="-ml-1 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -22,6 +23,7 @@
                     Edit Service
                 </a>
             </span>
+            @endcan
 
         </div>
 
@@ -87,6 +89,7 @@
                     </dd>
                 </div>
 
+                @can ('delete', $service)
                 <div class="flex bg-white items-center justify-end px-4 py-4 text-right sm:px-6">
         
                     <form method="POST" action="{{ route('services.destroy', $service) }}">
@@ -101,6 +104,7 @@
 
                 
                 </div>
+                @endcan
 
             </dl>
         </div>

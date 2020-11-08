@@ -81,6 +81,7 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         //
+        $this->authorize('view',$service);
         return view( 'services.show', [ 'service' => $service ] );
     }
 
@@ -93,6 +94,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         //
+        $this->authorize('update',$service);
         $machines = Machine::all();
         return view('services.edit', [
             'service' => $service,
@@ -109,6 +111,8 @@ class ServiceController extends Controller
     public function update(CreateServiceRequest $request, Service $service)
     {
         //
+        $this->authorize('update',$service);
+
         $input = $request->all();
         $service->machine_id = $input['machine_id'];
         $service->date = $input['date'];
@@ -129,6 +133,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         //
+        $this->authorize('delete',$service);
         $service->delete();
         return redirect('services');
     }

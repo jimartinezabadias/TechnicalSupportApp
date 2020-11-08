@@ -32,9 +32,9 @@ class ServicePolicy
     public function view(User $user, Service $service)
     {
         //
-        // if ($user->isAdmin())
-        //     return true;
-        // return $user->id === $service->machine->user_id;
+        if ($user->isAdmin())
+            return true;
+        return $user->id === $service->machine->user_id;
     }
 
     /**
@@ -59,6 +59,8 @@ class ServicePolicy
     public function update(User $user, Service $service)
     {
         //
+        if ($user->isAdmin())
+            return true;
     }
 
     /**
@@ -71,6 +73,8 @@ class ServicePolicy
     public function delete(User $user, Service $service)
     {
         //
+        if ($user->isAdmin())
+            return true;
     }
 
     /**
