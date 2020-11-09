@@ -34,7 +34,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function () {
 
     Route::resource('machines', MachineController::class);
 
-    Route::resource('services', ServiceController::class);
+    Route::get('services/create/{id}', [ServiceController::class, 'create'])
+        ->name('services.create');
+    Route::resource('services', ServiceController::class)->except(['create']);
 
 });    
 

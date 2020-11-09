@@ -21,32 +21,15 @@
                                 
                                 <div class="col-span-6 sm:col-span-4">
 
-                                    <!-- <div class='w-full md:w-full px-3 mb-6'> -->
-                                        <label for="machine" class='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>Machine</label>
-                                        <div class="flex-shrink w-full inline-block relative">
-                                            <select id="machine" name="machine_id" value="{{ old('machine_id') }}"
-                                                class="block appearance-none text-gray-600 w-full bg-white border border-gray-400 shadow-inner px-4 py-2 pr-8 rounded">
-                                                <option></option>
-                                                @foreach($machines as $machine)
-
-                                                    <option value="{{ $machine->id }}" 
-                                                        @if( old('machine_id') == $machine->id ) selected @endif
-                                                        >Model: {{ $machine->model }} Owner: {{ $machine->owner }}</option>
-
-                                                @endforeach
-                                                
-                                                <!-- <option @if( old('type') == "Plotter" ) selected @endif >Plotter</option> -->
-                                            </select>
-                                            <div class="pointer-events-none absolute top-0 mt-3  right-0 flex items-center px-2 text-gray-600">
-                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                                            </div>
-                                        </div>
-                                    <!-- </div> -->
-                                    @error('machine_id')
-                                        <div class="text-red-600">{{ $message }}</div>
-                                    @enderror
-
-                                    <!-- <input class="form-input rounded-md shadow-sm mt-1 block w-full" id="trademark" type="text"> -->
+                                    <label class="block font-medium text-sm text-gray-700" for="machine">
+                                        Machine
+                                    </label>
+        
+                                    <input id="machine" name="machine" type="text" value="{{ $machine->owner . '\'s ' . $machine->model }}" 
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full" disabled>
+                                    
+                                    <input id="machine_id" name="machine_id" type="text" value="{{ $machine->id }}" 
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full hidden">
 
                                 </div>
 

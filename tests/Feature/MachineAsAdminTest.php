@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use App\Models\Machine;
-use App\Http\Requests\CreateMachineRequest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -40,15 +39,31 @@ class MachineAsAdminTest extends TestCase
 
     // Ver como pasarle una request al store
     //
-    // public function testAdminCanStoreMachines()
-    // {
-    //     $client = User::factory()->create(['role' => 'client']);
+    public function testAdminCanStoreMachines()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
         
-    //     $response = $this->actingAs($client)
-    //                     ->get( route('machines.store' ) );
+        $machine_data = Machine::factory()->newModel();
 
-    //     $response->assertSee('Create Machine');
-    // }
+        // $this->assertEmpty(Machine::all()->toArray());
+
+        $response = $this->actingAs($admin)
+                        ->post( route('machines.store'), [
+                            'owner' => $machine_data->owner,
+                            'model' => $machine_data->model,
+                            'trademark' => $machine_data->trademark,
+                            'type' => $machine_data->type
+                        ]);
+        
+        // $machine = Machine::first();
+        
+        // $response->assertRedirect( route('machines.show', $machine->id) );
+        // $response->assertSee($machine_data->owner);
+
+        $response->assertRedirect();
+
+
+    }
 
     public function testAdminCanViewAnyMachine()
     {
@@ -114,14 +129,15 @@ class MachineAsAdminTest extends TestCase
         $other_machine = Machine::factory()->create();
         
         $response = $this->actingAs($admin)
-                        ->get( route('machines.destroy', $clients_machine->id ) );
+            ->delete( route('machines.destroy', $clients_machine->id ) );
 
-        $response->assertSuccessful();
-
+        $response->assertRedirect( route('machines.index') );
+        
         $response = $this->actingAs($admin)
-                        ->get( route('machines.destroy', $other_machine->id ) );
-
-        $response->assertSuccessful();
+            ->delete( route('machines.destroy', $other_machine->id ) );
+        
+        $response->assertRedirect( route('machines.index') );
+        // $response->assertSuccessful();
     }
 
     

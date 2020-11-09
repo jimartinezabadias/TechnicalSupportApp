@@ -15,7 +15,8 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('machine_id')->nullable();
+            // $table->foreignId('machine_id')->nullable();
+            $table->foreignId('machine_id');
             $table->string('failure');
             $table->date('date');
             $table->decimal('price',10,2);
