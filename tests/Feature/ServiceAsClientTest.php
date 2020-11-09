@@ -55,6 +55,7 @@ class ServiceAsClientTest extends TestCase
         $response->assertSee('Service Information');
         $response->assertSee($machine_1->model);
         $response->assertSee($service_1->failure);
+        $response->assertSee($service_1->description);
         $response->assertDontSee('Edit Service');
         $response->assertDontSee('Delete Service');
         
@@ -62,7 +63,6 @@ class ServiceAsClientTest extends TestCase
             ->get( route('services.show', $service_2->id) );
         
         $response->assertForbidden();
-
     }
 
     
