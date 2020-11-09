@@ -53,6 +53,7 @@ class ServiceController extends Controller
      */
     public function create($machine_id)
     {
+        $this->authorize('create',Service::class);
         $machine = Machine::find($machine_id);
         return view('services.create', [ 'machine' => $machine ]);
     }
@@ -66,6 +67,7 @@ class ServiceController extends Controller
     public function store(CreateServiceRequest $request)
     {
         //
+        // $this->authorize('create',Service::class);
         $input = $request->all();
         // dd($input);
         Service::create($input);

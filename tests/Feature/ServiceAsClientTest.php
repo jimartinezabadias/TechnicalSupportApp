@@ -65,6 +65,27 @@ class ServiceAsClientTest extends TestCase
         $response->assertForbidden();
     }
 
+    public function testClientCantCreateServices()
+    {
+        $client = User::factory()->create(['role' => 'client']);
+        $machine = Machine::factory()->create();
+
+        $response = $this->actingAs($client)
+                        ->get( route('services.create', $machine->id ) );
+
+        $response->assertForbidden();
+    }
     
+    // ver porque tira redirect y no forbidden, mismo caso en test de maquina
+    // public function testClientCantStoreAService()
+    // {
+    //     $client = User::factory()->create(['role' => 'client']);
+    //     $machine = Machine::factory()->create();
+
+    //     $response = $this->actingAs($client)
+    //                     ->post( route('services.store') );
+
+    //     $response->assertForbidden();
+    // }
 
 }

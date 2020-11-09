@@ -37,6 +37,17 @@ class MachineAsClientTest extends TestCase
 
         $response->assertForbidden();
     }
+    
+    // ver porque no tira forbidden
+    // public function testClientCantStoreMachines()
+    // {
+    //     $client = User::factory()->create(['role' => 'client']);
+        
+    //     $response = $this->actingAs($client)
+    //                     ->post( route('machines.store' ) );
+
+    //     $response->assertForbidden();
+    // }
    
     public function testClientCantEditMachines()
     {
@@ -72,24 +83,6 @@ class MachineAsClientTest extends TestCase
 
         $response->assertForbidden();
     }
-    
-    // Ver como pasarle una request al store
-    
-    // public function testClientCantStoreMachines()
-    // {
-    //     $client = User::factory()->create(['role' => 'client']);
-
-    //     $machine_data = Machine::factory()->newModel();
-        
-    //     $response = $this->actingAs($client)
-    //                     ->post( route('machines.store', [
-    //                         'owner' => $machine_data->owner,
-    //                         'model' => $machine_data->model,
-    //                         'trademark' => $machine_data->trademark,
-    //                         'type' => $machine_data->type
-    //                     ]))
-    //                     ->assertForbidden();
-    // }
 
     public function testClientCanViewTheirMachines()
     {
