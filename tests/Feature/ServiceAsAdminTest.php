@@ -103,5 +103,36 @@ class ServiceAsAdminTest extends TestCase
 
     }
 
+    public function testAdminCanEditAnyService()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+
+        $client = User::factory()->create(['role' => 'client']);
+        $machine = Machine::factory()->create();
+        $service = Service::factory()->create(['machine_id' => $machine->id]);
+        
+        
+        $response = $this->actingAs($admin)
+            ->get( route('services.edit', $service->id ) );
+        
+        $response->assertSuccessful();
+        $response->assertSee($machine->owner);
+        $response->assertSee($machine->model);
+        $response->assertSee($service->failure);
+        $response->assertSee($service->description);
+        
+        $service_2 = Service::factory()->create();
+        
+        $response = $this->actingAs($admin)
+            ->get( route('services.edit', $service_2->id ) );
+        
+        $response->assertSuccessful();
+        $response->assertSee($service_2->machine->owner);
+        $response->assertSee($service_2->machine->model);
+        $response->assertSee($service_2->failure);
+        $response->assertSee($service_2->description);
+
+    }
+
 
 }

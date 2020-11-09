@@ -88,4 +88,16 @@ class ServiceAsClientTest extends TestCase
     //     $response->assertForbidden();
     // }
 
+    public function testClientCanNotEditServices()
+    {
+        $client = User::factory()->create(['role' => 'client']);
+        $machine = Machine::factory()->create();
+        $service = Service::factory()->create(['machine_id' => $machine->id]);
+        
+        $response = $this->actingAs($client)
+                        ->get( route('services.edit', $service->id ) );
+
+        $response->assertForbidden();
+    }
+
 }
