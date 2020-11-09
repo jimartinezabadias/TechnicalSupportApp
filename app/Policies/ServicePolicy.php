@@ -16,7 +16,9 @@ class ServicePolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    
+    // public function viewAny(User $user)
+    public function viewAny()
     {
         //
         return true;
@@ -56,7 +58,9 @@ class ServicePolicy
      * @param  \App\Models\Service  $service
      * @return mixed
      */
-    public function update(User $user, Service $service)
+    
+    // public function update(User $user, Service $service)
+    public function update(User $user)
     {
         //
         if ($user->isAdmin())
@@ -70,7 +74,9 @@ class ServicePolicy
      * @param  \App\Models\Service  $service
      * @return mixed
      */
-    public function delete(User $user, Service $service)
+    
+    // public function delete(User $user, Service $service)
+    public function delete(User $user)
     {
         //
         if ($user->isAdmin())

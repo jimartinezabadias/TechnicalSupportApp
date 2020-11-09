@@ -65,7 +65,7 @@ class ServiceAsAdminTest extends TestCase
     {
         $admin = User::factory()->create(['role' => 'admin']);
 
-        $client = User::factory()->create(['role' => 'client']);
+        // $client = User::factory()->create(['role' => 'client']);
         $machine = Machine::factory()->create();
 
         $response = $this->actingAs($admin)

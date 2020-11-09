@@ -55,7 +55,7 @@ class MachineAsAdminTest extends TestCase
                             'type' => $machine_data->type
                         ]);
         
-        $machine = Machine::first();
+        // $machine = Machine::first();
         
         // $response->assertRedirect( route('machines.show', $machine->id) );
         // $response->assertSee($machine_data->owner);

@@ -33,6 +33,8 @@ class ServiceAsClientTest extends TestCase
         $response->assertDontSee('Create Service');
         $response->assertSee($machine_1->model);
         $response->assertDontSee($machine_2->model);
+        $response->assertSee($service_1->failure);
+        $response->assertDontSee($service_2->failure);
 
     }
     
