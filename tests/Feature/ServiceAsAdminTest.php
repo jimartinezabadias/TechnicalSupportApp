@@ -134,5 +134,24 @@ class ServiceAsAdminTest extends TestCase
 
     }
 
+    public function testAdminCanDeleteAnyService()
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        
+        $client = User::factory()->create(['role' => 'client']);
+        $machine = Machine::factory()->create();
+        $service = Service::factory()->create(['machine_id' => $machine->id]);
 
+        $response = $this->actingAs($admin)
+            ->delete( route('services.destroy', $service->id ) );
+        
+        $response->assertRedirect( route('services.index') );
+
+        $service_2 = Service::factory()->create();
+        $response = $this->actingAs($admin)
+            ->delete( route('services.destroy', $service_2->id ) );
+        
+        $response->assertRedirect( route('services.index') );
+
+    }
 }

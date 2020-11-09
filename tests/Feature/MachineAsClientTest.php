@@ -28,7 +28,7 @@ class MachineAsClientTest extends TestCase
         $response->assertSee('My Machines');
     }
 
-    public function testClientCantCreateMachines()
+    public function testClientCanNotCreateMachines()
     {
         $client = User::factory()->create(['role' => 'client']);
         
@@ -49,7 +49,7 @@ class MachineAsClientTest extends TestCase
     //     $response->assertForbidden();
     // }
    
-    public function testClientCantEditMachines()
+    public function testClientCanNotEditMachines()
     {
         $client = User::factory()
             ->has(Machine::factory())
@@ -63,7 +63,7 @@ class MachineAsClientTest extends TestCase
         $response->assertForbidden();
     }
     
-    public function testClientCantDeleteMachines()
+    public function testClientCanNotDeleteMachines()
     {
         $client = User::factory()
             ->has(Machine::factory())
@@ -100,7 +100,7 @@ class MachineAsClientTest extends TestCase
         $response->assertSee($machine->trademark);
     }
     
-    public function testClientCantViewOtherMachines()
+    public function testClientCanNotViewOtherMachines()
     {
         $client = User::factory()->create(['role' => 'client']);
         
