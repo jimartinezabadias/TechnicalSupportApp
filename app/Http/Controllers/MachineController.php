@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Machine;
+use App\Models\User;
 use App\Http\Requests\CreateMachineRequest;
 use Illuminate\Http\Request;
 
@@ -56,7 +57,8 @@ class MachineController extends Controller
     public function create()
     {
         $this->authorize('create',Machine::class);
-        return view('machines.create');
+        $clients = User::where('role','client')->get();
+        return view('machines.create', ['clients' => $clients]);
     }
 
     /**
@@ -76,7 +78,7 @@ class MachineController extends Controller
         $new_machine->model = $input['model'];
         $new_machine->trademark = $input['trademark'];
         $new_machine->type = $input['type'];
-        $new_machine->user_id = $request->user()->id;
+        $new_machine->user_id = $input['user_id'];
         
         $new_machine->save();
 
