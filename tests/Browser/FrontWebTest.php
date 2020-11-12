@@ -7,41 +7,23 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use App\Models\Machine;
 use App\Models\Service;
+use App\Models\User;
 
 class FrontWebTest extends DuskTestCase
 {
-    /**
-     * A basic browser test example.
-     *
-     * @return void
-     */
-    public function testFrontMachines()
+    
+    public function testFrontWeb()
     {
-        $this->browse(function (Browser $browser) {
+        $total_clients = User::where('role','client')->count();
+        $total_machines = Machine::all()->count();
+        $total_services = Service::all()->count();
+        
+        $this->browse(function (Browser $browser) use ($total_clients, $total_services, $total_machines){
             $browser->visit('/')
-                    ->assertSee('All Machines');
+                    ->assertSeeIn('#total_clients', $total_clients)
+                    ->assertSeeIn('#total_services', $total_services)
+                    ->assertSeeIn('#total_machines', $total_machines);
         });
     }
     
-    public function testMachineHistory()
-    {
-        $machine = Machine::factory()
-            ->has(Service::factory()->count(3))
-            ->create();
-
-        $machine_id = $machine->id;
-        
-        $this->browse(function (Browser $browser) use ($machine_id){
-            $browser->visit('/')
-                ->clickLink('View')
-                ->assertPathIs("/machine-history/{$machine_id}");
-        });
-
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                ->clickLink('View')
-                ->assertSee('Service Information');
-        });
-
-    }
 }
