@@ -15,12 +15,14 @@ class ServiceAsAdminTest extends TestCase
     public function testAdminCanViewAllServices()
     {
         $admin = User::factory()->create(['role' => 'admin']);
-        
+
         $response = $this->actingAs($admin)
                         ->get( route('services.index') );
 
         $response->assertSuccessful();
         $response->assertSee('All Services');
+        // no le pude meter assert see por el paginado
+
     }
 
     public function testAdminCanViewAnyService()
@@ -64,8 +66,7 @@ class ServiceAsAdminTest extends TestCase
     public function testAdminCanCreateAService()
     {
         $admin = User::factory()->create(['role' => 'admin']);
-
-        // $client = User::factory()->create(['role' => 'client']);
+        
         $machine = Machine::factory()->create();
 
         $response = $this->actingAs($admin)
@@ -83,23 +84,16 @@ class ServiceAsAdminTest extends TestCase
         $admin = User::factory()->create(['role' => 'admin']);
         
         $client = User::factory()->create(['role' => 'client']);
-        $machine = Machine::factory()->create();
+        $machine = Machine::factory()->create(['user_id' => $client->id]);
+
+        $service_data = Service::factory()->make(['machine_id' => $machine->id])->toArray();
 
         $response = $this->actingAs($admin)
-                        ->post( route('services.store'), [
-                            'machine_id' => $machine->id,
-                            'failure' => 'this is the test service',
-                            'date' => date('m/d/Y h:i:s a', time()),
-                            'price' => '1232134',
-                            'failure_description' => 'ssfasf',
-                            'service_description' => 'sdfsfsf'
-                        ]);
+                        ->post( route('services.store'), $service_data );
         
         $response->assertRedirect();
-        
-        // no funcionana otros asserts porque se ve una vista intermedia
-        // igual que en el test de maquina 
-        // $response->assertSee('this is the test service');
+
+        $this->assertDatabaseHas('services', $service_data);
 
     }
 
@@ -140,18 +134,19 @@ class ServiceAsAdminTest extends TestCase
         
         $client = User::factory()->create(['role' => 'client']);
         $machine = Machine::factory()->create();
-        $service = Service::factory()->create(['machine_id' => $machine->id]);
+        $service = Service::factory()->create(['machine_id' => $machine->id])->toArray();
 
         $response = $this->actingAs($admin)
-            ->delete( route('services.destroy', $service->id ) );
+            ->delete( route('services.destroy', $service['id'] ) );
         
         $response->assertRedirect( route('services.index') );
+        $this->assertDeleted('services', $service);
 
-        $service_2 = Service::factory()->create();
+        $service_2 = Service::factory()->create()->toArray();
         $response = $this->actingAs($admin)
-            ->delete( route('services.destroy', $service_2->id ) );
+            ->delete( route('services.destroy', $service_2['id'] ) );
         
         $response->assertRedirect( route('services.index') );
-
+        $this->assertDeleted('services', $service_2);
     }
 }
