@@ -2,35 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Machine;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class FrontWebController extends Controller
 {
     //
 
-    public static function index(Request $request)
+    public static function index()
     {
-        $search = $request->get('search');
-
-        $machines = Machine::where('type','iLIKE', "%{$search}%" )
-            ->orWhere('owner','iLIKE', "%{$search}%" )
-            ->orWhere('model','iLIKE', "%{$search}%" )
-            ->paginate(10);
+        $total_clients = User::where('role','client')->count();
+        $total_machines = Machine::all()->count();
+        $total_services = Service::all()->count();
         
         return view('frontweb.index', [
-            'machines' => $machines
+            'total_clients' => $total_clients,
+            'total_machines' => $total_machines,
+            'total_services' => $total_services
         ]);
     }
-
-    public static function machineHistory($machine_id)
-    {
-        $machineWithServices = Machine::with('services')->find($machine_id);
-
-        return view('frontweb.machine-history', [
-            'machine' => $machineWithServices
-        ]);
-    }
-
 
 }
