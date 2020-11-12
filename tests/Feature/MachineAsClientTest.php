@@ -18,14 +18,24 @@ class MachineAsClientTest extends TestCase
 
     public function testClientCanViewAllTheirMachines()
     {
-        // mejorar creando un cliente con maquinas
-        // y preguntando por los datos de las maquinas
         $client = User::factory()->create(['role' => 'client']);
+        $machine_1 = Machine::factory()->create(['user_id' => $client->id]);
+        $machine_2 = Machine::factory()->create(['user_id' => $client->id]);
         
+        $client_2 = User::factory()->create(['role' => 'client']);
+        $machine_3 = Machine::factory()->create(['user_id' => $client_2->id]);
+        $machine_4 = Machine::factory()->create(['user_id' => $client_2->id]);
+
         $response = $this->actingAs($client)
                         ->get( route('machines.index') );
 
         $response->assertSee('My Machines');
+        $response->assertSee($machine_1->model);
+        $response->assertSee($machine_2->model);
+        
+        $response->assertDontSee($machine_3->model);
+        $response->assertDontSee($machine_4->model);
+
     }
 
     public function testClientCanNotCreateMachines()
@@ -38,16 +48,18 @@ class MachineAsClientTest extends TestCase
         $response->assertForbidden();
     }
     
-    // ver porque no tira forbidden
-    // public function testClientCantStoreMachines()
-    // {
-    //     $client = User::factory()->create(['role' => 'client']);
-        
-    //     $response = $this->actingAs($client)
-    //                     ->post( route('machines.store' ) );
+    public function testClientCanNotStoreMachines()
+    {
+        $client = User::factory()->create(['role' => 'client']);
+        $machine_data = Machine::factory()->make()->toArray();
 
-    //     $response->assertForbidden();
-    // }
+        $response = $this->actingAs($client)
+                        ->post( route('machines.store'), $machine_data );
+
+        $response->assertForbidden();
+
+        $this->assertDatabaseMissing('machines', $machine_data);
+    }
    
     public function testClientCanNotEditMachines()
     {
