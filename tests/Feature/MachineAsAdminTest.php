@@ -36,6 +36,7 @@ class MachineAsAdminTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertSee('Create Machine');
+        $response->assertSee('Client user');
     }
 
     public function testAdminCanStoreMachines()
@@ -97,6 +98,7 @@ class MachineAsAdminTest extends TestCase
                         ->get( route('machines.edit', $clients_machine->id ) );
 
         $response->assertSuccessful();
+        $response->assertSee('Client user');
         
         $response = $this->actingAs($admin)
                         ->get( route('machines.edit', $other_machine->id ) );
