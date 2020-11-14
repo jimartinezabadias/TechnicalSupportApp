@@ -109,7 +109,11 @@ class MachineController extends Controller
     {
         //
         $this->authorize('update',$machine);
-        return view('machines.edit', ['machine' => $machine] );
+        $clients = User::where(['role' => 'client'])->get();
+        return view('machines.edit', [
+            'machine' => $machine,
+            'clients' => $clients
+        ]);
     }
 
     /**
@@ -128,6 +132,14 @@ class MachineController extends Controller
         $machine->type = $input['type'];
         $machine->model = $input['model'];
         $machine->trademark = $input['trademark'];
+        if ($input['user_id'] !== "Sin Usuario")
+        {
+            $machine->user_id = $input['user_id'];
+        }
+        else
+        {
+            $machine->user_id = null;
+        }
         $machine->save();
         return back()->with('success','Machine updated');
     }
