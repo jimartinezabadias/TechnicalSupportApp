@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Service extends Model
 {
@@ -23,5 +24,9 @@ class Service extends Model
 
         return $this->belongsTo('App\Models\Machine');
 
+    }
+
+    public function getServiceImagePathAttribute(){
+        return Storage::url($this->service_image);
     }
 }
