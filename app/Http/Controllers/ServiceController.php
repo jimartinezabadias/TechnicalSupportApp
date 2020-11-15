@@ -69,7 +69,13 @@ class ServiceController extends Controller
         //
         // $this->authorize('create',Service::class);
         $input = $request->all();
-        // dd($input);
+        if ($request->file('service_image')){
+            $imagePath = $request->file('service_image')->store('services_files',[
+                'disk' => 'public'
+            ]);
+            $input['service_image'] = $imagePath;
+        }
+        
         Service::create($input);
         return redirect('services');
     }
