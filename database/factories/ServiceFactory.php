@@ -31,7 +31,8 @@ class ServiceFactory extends Factory
             'date' => $this->faker->date(),
             'price' => $this->faker->randomNumber(8,false),
             'failure_description' => $this->faker->sentence(2),
-            'service_description' => $this->faker->sentence(4)
+            'service_description' => $this->faker->sentence(4),
+            'service_image' => null
         ];
 
     }

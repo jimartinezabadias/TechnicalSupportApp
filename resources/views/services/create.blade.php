@@ -13,7 +13,7 @@
             </div>
 
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="POST" action="{{ route('services.store') }}">
+                <form method="POST" action="{{ route('services.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -104,6 +104,22 @@
                                         class="form-input rounded-md shadow-sm mt-1 block w-full">{{ old('service_description') }}</textarea>
                                     
                                     @error('service_description')
+                                        <div class="text-red-600">{{ $message }}</div>
+                                    @enderror
+                                    
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-6">
+                                    
+                                    <label class="block font-medium text-sm text-gray-700" for="image">
+                                        Image
+                                    </label>
+        
+                                    <input id="service_image" name="service_image" type="file"
+                                        value="{{ old('service_image') }}" 
+                                        class="form-input rounded-md shadow-sm mt-1 block w-full">
+                                    
+                                    @error('service_image')
                                         <div class="text-red-600">{{ $message }}</div>
                                     @enderror
                                     
