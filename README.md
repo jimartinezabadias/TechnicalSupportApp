@@ -7,3 +7,24 @@
 
 ## About this project
 Application for Programación Web 2, TUPAR 2020. FCE, UNICEN.
+
+## Deployed demo
+<a href="https://technical-support-app.herokuapp.com/">technical-support-app.herokuapp.com</a>
+
+## Install project
+
+Clone the project
+$ git clone https://github.com/jimartinezabadias/TechnicalSupportApp.git
+
+Install dependencies w/composer
+$ docker run -it --rm --volume $PWD:/app --user $(id -u):$(id -g) composer:1.10.10 composer -vvv install
+
+Create .env from .env.example
+$ cp .env.example .env
+
+Run Migrations
+$ docker exec -it LaravelApp-app php artisan migrate
+
+Run docker containers
+$ docker-compose up -d
+
