@@ -30,8 +30,10 @@ Run docker containers
 `$ docker-compose up -d`
 
 Generate Key
-$ docker exec -it Laravel-app php artisan key:generate
+
+`$ docker exec -it Laravel-app php artisan key:generate`
 
 Run Migrations
-$ docker exec -it Laravel-app php artisan migrate
+
+`$ docker exec -it Laravel-app php artisan migrate`
 
