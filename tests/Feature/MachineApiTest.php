@@ -21,16 +21,16 @@ class MachineApiTest extends TestCase
         $user = User::factory()->create();
 
         $machine = Machine::factory()->create();
-
+        $machines = Machine::count();
         Sanctum::actingAs(
             $user,
             ['view-machines']
         );
 
         $response = $this->getJson('/api/machines');
-
+        
         $response->assertStatus(200);
-        $response->assertJsonCount(1);
+        $response->assertJsonCount($machines);
         $response->assertJsonFragment([
             "owner" => $machine->owner
         ]);
