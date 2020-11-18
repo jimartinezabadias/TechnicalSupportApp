@@ -35,7 +35,7 @@ class MachineApiTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJsonCount(1);
-        $response->assertJson([
+        $response->assertJsonFragment([
             "assigned_to" => $user->id
         ]);
     }
