@@ -25,11 +25,13 @@ Create .env from .env.example
 
 `$ cp .env.example .env`
 
-Run Migrations
-
-`$ docker exec -it LaravelApp-app php artisan migrate`
-
 Run docker containers
 
 `$ docker-compose up -d`
+
+Generate Key
+$ docker exec -it Laravel-app php artisan key:generate
+
+Run Migrations
+$ docker exec -it Laravel-app php artisan migrate
 
