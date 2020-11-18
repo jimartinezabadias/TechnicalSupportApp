@@ -8,7 +8,7 @@
 ## About this project
 This application was build as a practical exercise for Programación Web 2, TUPAR 2020. FCE, UNICEN.
 
-Special thanks to professors **Ignacio Jonas** and **Alejandro Pérez**.
+Thanks to professors **Ignacio Jonas** and **Alejandro Pérez**.
 
 
 
