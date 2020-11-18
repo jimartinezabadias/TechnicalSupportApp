@@ -25,6 +25,16 @@ Create .env from .env.example
 
 `$ cp .env.example .env`
 
+Edit .env
+
+    * Set APP_ENV to local `APP_ENV=local`
+    
+    * Add Selenuim URL `SELENIUM_URL=http://selenium:4444/wd/hub`
+    
+    * Set DB_HOST to database `DB_HOST=database`
+    
+    * Set DB_PORT to 5432 `DB_PORT=5432`
+
 Run docker containers
 
 `$ docker-compose up -d`
