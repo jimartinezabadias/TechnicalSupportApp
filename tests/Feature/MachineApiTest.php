@@ -20,15 +20,11 @@ class MachineApiTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $machine = Machine::factory()->create(
-            [
-                "assigned_to" => $user->id
-            ]
-        );
+        $machine = Machine::factory()->create();
 
         Sanctum::actingAs(
-            $User,
-            ['view machines']
+            $user,
+            ['view-machines']
         );
 
         $response = $this->getJson('/api/machines');
@@ -36,7 +32,7 @@ class MachineApiTest extends TestCase
         $response->assertStatus(200);
         $response->assertJsonCount(1);
         $response->assertJsonFragment([
-            "assigned_to" => $user->id
+            "owner" => $machine->owner
         ]);
     }
 }
