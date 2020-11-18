@@ -18,15 +18,10 @@ The following concepts and technologies where applied:
 
 
 * Docker and Docker Compose
-
 * Advanced Git
-
 * Test Automation 
-
 * CI w/Github Actions
-
 * CD w/Github Actions and Heroku
-
 * Code Quality
 
 
@@ -34,19 +29,12 @@ The following concepts and technologies where applied:
 
 
 * MVC
-
 * ORM w/Eloquent
-
 * Testing w/Php Unit and Laravel Dusk
-
 * TDD
-
 * Composer
-
 * Authentication and Authorization w/Jetstream
-
 * API REST
-
 * Tailwind Css
 
 
