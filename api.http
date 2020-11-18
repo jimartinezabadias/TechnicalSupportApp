@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/machine
+GET http://localhost:8080/api/machines
 Accept: application/json
 Autorization: Bearer 0YN2CJbUnLQ7NuY3RUVwe4OjsdiCUQPQJtx6WaHT
 
