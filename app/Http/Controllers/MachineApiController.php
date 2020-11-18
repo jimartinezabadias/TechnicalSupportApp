@@ -14,7 +14,8 @@ class MachineApiController extends Controller
      */
     public function index(Request $request)
     {
-        $machines = Machine::where('assigned_to',$request->user()->id)->get();
+        $machines = Machine::all();
+        
         return response()->json($machines);
     }
 
