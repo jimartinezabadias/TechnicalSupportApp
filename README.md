@@ -7,14 +7,52 @@
 
 ## About this project
 This application was build as a practical exercise for Programación Web 2, TUPAR 2020. FCE, UNICEN.
-Special thanks to professors Ignacio Jonas and Alejandro Pérez.
+
+Special thanks to professors **Ignacio Jonas** and **Alejandro Pérez**.
+
+
 
 The following concepts and technologies where applied:
-DevOps (Docker and Docker Compose, Advanced Git, Test Automation, CI w/Github Actions, CD w/Github Actions and Heroku, Code Quality)
-Laravel (MVC, ORM w/Eloquent, Testing w/Php Unit and Laravel Dusk, TDD, Composer, Authentication and Authorization w/Jetstream, API REST, Tailwind Css)
+
+##### DevOps
+
+
+* Docker and Docker Compose
+
+* Advanced Git
+
+* Test Automation 
+
+* CI w/Github Actions
+
+* CD w/Github Actions and Heroku
+
+* Code Quality
+
+
+##### Laravel 
+
+
+* MVC
+
+* ORM w/Eloquent
+
+* Testing w/Php Unit and Laravel Dusk
+
+* TDD
+
+* Composer
+
+* Authentication and Authorization w/Jetstream
+
+* API REST
+
+* Tailwind Css
+
 
 ## Deployed demo
 <a href="https://technical-support-app.herokuapp.com/">technical-support-app.herokuapp.com</a>
+
 
 ## Install project
 
