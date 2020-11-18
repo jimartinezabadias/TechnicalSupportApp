@@ -13,19 +13,19 @@ Application for Programación Web 2, TUPAR 2020. FCE, UNICEN.
 
 ## Install project
 
-Clone the project
+##### Clone the project
 
 `$ git clone https://github.com/jimartinezabadias/TechnicalSupportApp.git`
 
-Install dependencies w/composer
+##### Install dependencies w/composer
 
 `$ docker run -it --rm --volume $PWD:/app --user $(id -u):$(id -g) composer:1.10.10 composer -vvv install`
 
-Create .env from .env.example
+##### Create .env from .env.example
 
 `$ cp .env.example .env`
 
-Edit .env
+##### Edit .env
 
 * Set APP_ENV to local `APP_ENV=local`
     
@@ -35,15 +35,15 @@ Edit .env
     
 * Set DB_PORT to 5432 `DB_PORT=5432`
 
-Run docker containers
+##### Run docker containers
 
 `$ docker-compose up -d`
 
-Generate Key
+##### Generate Key
 
 `$ docker exec -it Laravel-app php artisan key:generate`
 
-Run Migrations
+##### Run Migrations
 
 `$ docker exec -it Laravel-app php artisan migrate`
 
