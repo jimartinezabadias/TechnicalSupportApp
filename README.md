@@ -18,6 +18,7 @@ The following concepts and technologies where applied:
 
 
 * Docker and Docker Compose
+* GitHub flow
 * Advanced Git
 * Test Automation 
 * CI w/Github Actions
@@ -77,4 +78,6 @@ The following concepts and technologies where applied:
 ##### Run Migrations
 
 `$ docker exec -it Laravel-app php artisan migrate`
+
+##### App must be running in port 8080
 
